@@ -611,6 +611,19 @@ kill(int pid)
   return -1;
 }
 
+int getrunningproc(void) {
+  struct proc *p;
+
+  int counter = 0;
+  for(p = proc; p < &proc[NPROC]; p++){
+    if (p->state != UNUSED) {
+      counter++;
+    }
+  } 
+
+  return counter;
+}
+
 void
 setkilled(struct proc *p)
 {
